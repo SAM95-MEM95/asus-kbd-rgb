@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Колір підсвітки клавіатури
+Comment=Змінити колір RGB-клавіатури ASUS
+Exec=/usr/bin/kbd-color
+Icon=preferences-desktop-color
+Terminal=false
+Categories=Settings;
