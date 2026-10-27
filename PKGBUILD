@@ -10,10 +10,10 @@ source=()
 sha256sums=()
 
 package() {
-    install -Dm755 "$srcdir/src/kbd-color" \
+    install -Dm755 "$startdir/src/kbd-color" \
         "$pkgdir/usr/bin/kbd-color"
-    install -Dm755 "$srcdir/src/apply-color" \
+    install -Dm755 "$startdir/src/apply-color" \
         "$pkgdir/usr/lib/asus-kbd-rgb/apply-color"
-    install -Dm644 "$srcdir/src/kbd-color.desktop" \
+    install -Dm644 "$startdir/src/kbd-color.desktop" \
         "$pkgdir/usr/share/applications/kbd-color.desktop"
 }
