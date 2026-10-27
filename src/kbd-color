@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+LED=/sys/class/leds/asus::kbd_backlight
+[[ -w "$LED/kbd_rgb_mode" || -e "$LED/kbd_rgb_mode" ]] || {
+    kdialog --error "Не знайдено RGB-керування клавіатурою."
+    exit 1
+}
+
+color=$(kdialog --getcolor --title "Колір підсвітки клавіатури") || exit 0
+color=${color#\#}
+
+[[ "$color" =~ ^[0-9A-Fa-f]{6}$ ]] || {
+    kdialog --error "Некоректний формат кольору."
+    exit 1
+}
+
+r=$((16#${color:0:2}))
+g=$((16#${color:2:2}))
+b=$((16#${color:4:2}))
+
+pkexec /usr/lib/asus-kbd-rgb/apply-color "$r" "$g" "$b"
